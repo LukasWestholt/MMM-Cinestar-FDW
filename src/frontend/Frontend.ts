@@ -10,6 +10,7 @@ Module.register<Config>("MMM-Cinestar-FDW", {
   defaults: {
     cinemaID: 29,
     updateIntervalInSeconds: 60 * 60 * 5, // 5h
+    maxHeight: 150,
   },
 
   getStyles() {
@@ -24,7 +25,6 @@ Module.register<Config>("MMM-Cinestar-FDW", {
     return {
       config: this.config,
       movies: this.state?.movies,
-      // lastUpdate: moment(this.state?.lastUpdate),
     };
   },
 

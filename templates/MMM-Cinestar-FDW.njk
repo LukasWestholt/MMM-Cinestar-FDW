@@ -1,8 +1,5 @@
-<div>
-    Hallo Test!
-    {% for movie in movies %}
-      <li class="jast-stock">
-        <img src="{{ movie.poster_url }}" alt="Movie">
-      </li>
-    {% endfor %}
-</div>
+{% for movie in movies %}
+  <li class="cinestar-fdw-movie">
+    <img id="{{ movie.movie_id }}" src="{{ movie.poster_url }}" alt="Movie poster {{ movie.title }}" style="height:{{config.maxHeight}}px;">
+  </li>
+{% endfor %}
