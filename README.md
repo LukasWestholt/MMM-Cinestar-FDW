@@ -27,12 +27,12 @@ This module depends on the following external API:
 
 1. Clone or download this repository to your [MagicMirror²][mm] modules folder.
 
-```bash
-cd ~/MagicMirror/modules
-git clone https://github.com/LukasWestholt/MMM-Cinestar-FDW
-```
+    ```bash
+    cd ~/MagicMirror/modules
+    git clone https://github.com/LukasWestholt/MMM-Cinestar-FDW
+    ```
 
-2. Install the necessary dependencies by running npm install in the module folder.
+2. Install the necessary dependencies and build the module by running npm install in the module folder.
 
    ```sh
    cd MMM-Cinestar-FDW
@@ -41,20 +41,23 @@ git clone https://github.com/LukasWestholt/MMM-Cinestar-FDW
 
 3. Configure the module in your `MagicMirror/config/config.js` file as per the usage instructions (sample configuration).
 
-```javascript
-{
-  module: "MMM-Cinestar-FDW",
-  position: "top_left",
-  config: {
-  }
-}
-```
+    ```javascript
+    {
+      module: "MMM-Cinestar-FDW",
+      position: "top_left",
+      config: {
+      }
+    }
+    ```
 
-## Configuration options
+[//]: # (## Configuration options)
 
-| Option           | Possible values | Default       | Description                     |
-| ---------------- | --------------- | ------------- | ------------------------------- |
-| `exampleContent` | `string`        | not available | The content to show on the page |
+[//]: # ()
+[//]: # (| Option           | Possible values | Default       | Description                     |)
+
+[//]: # (| ---------------- | --------------- | ------------- | ------------------------------- |)
+
+[//]: # (| `exampleContent` | `string`        | not available | The content to show on the page |)
 
 ## Update
 
@@ -74,13 +77,12 @@ npm install
 
 This module is written in TypeScript and compiled with Rollup.  
 The source files are located in the `/src` folder.
-Compile target files with `npm run build`.
+Compile target files with `npm run build` or with `npm install`.
 
 Contribution for this module is welcome!
 
 ## Developer commands
 
-- `npm install` - Install devDependencies like ESLint.
 - `npm run lint` - Run linting and formatter checks.
 - `npm run lint:fix` - Fix linting and formatter issues.
 
