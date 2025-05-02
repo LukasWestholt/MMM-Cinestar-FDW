@@ -11,11 +11,8 @@ Module.register<Config>("MMM-Cinestar-FDW", {
     return ["MMM-Cinestar-FDW.css"];
   },
 
-  getDom() {
-    const wrapper = document.createElement("div");
-    wrapper.innerHTML = `<b>Title</b><br />Test!`;
-
-    return wrapper;
+  getTemplate() {
+    return "templates/MMM-Cinestar-FDW.njk";
   },
 
   getTemplateData() {
@@ -58,7 +55,6 @@ Module.register<Config>("MMM-Cinestar-FDW", {
         this.state = payload;
         this.updateDom();
         console.log(`${this.name} Data: ${payload}`);
-        console.log("data", payload);
         this.sendSocketNotification(`CINESTAR_FDW_NEW`, this.state);
       } else {
         this.state = payload;
