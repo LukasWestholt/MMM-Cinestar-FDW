@@ -1,6 +1,11 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
 import { Movie } from "../types/Movie";
+import {
+  CinestarAtribute,
+  CinestarCinema,
+  CinestarUI,
+} from "../types/CinestarAPI";
 
 export default class CinestarBackendUtils {
   static async queryMovieInformation(movieId: number): Promise<Movie> {
@@ -35,19 +40,20 @@ export default class CinestarBackendUtils {
   }
 
   static async getFdwIdentifier(): Promise<string> {
-    const response = await axios.get(
+    const response = await axios.get<CinestarAtribute[]>(
       "https://www.cinestar.de/api/attribute/?appVersion=1.5.3",
     );
     const data = response.data;
-    return data.find((obj: any) => obj.id === "ET_FILM_DER_WOCHE").name;
+    return data.find((obj: CinestarAtribute) => obj.id === "ET_FILM_DER_WOCHE")
+      .name;
   }
 
   static async getCinemaSuburl(cinemaID: number): Promise<string> {
-    const response = await axios.get(
+    const response = await axios.get<CinestarCinema[]>(
       "https://www.cinestar.de/api/cinema/?appVersion=1.5.3",
     );
     const data = response.data;
-    return data.find((obj: any) => obj.id == cinemaID).slug;
+    return data.find((obj: CinestarCinema) => obj.id == cinemaID).slug;
   }
 
   static async getFdwPageUrl(
@@ -55,11 +61,13 @@ export default class CinestarBackendUtils {
     suburl: string,
     cinemaID: number,
   ): Promise<string> {
-    const response = await axios.get(
+    const response = await axios.get<CinestarUI[]>(
       `https://www.cinestar.de/aets/flaps/${cinemaID}?appVersion=1.5.3`,
     );
     const data = response.data;
-    const url = data.find((obj: any) => obj.title === fdwIdentifier).link;
+    const url = data.find(
+      (obj: CinestarUI) => obj.title === fdwIdentifier,
+    ).link;
     return url.replace("/redirect/", `/${suburl}/`);
   }
 
