@@ -27,10 +27,10 @@ This module depends on the following external API:
 
 1. Clone or download this repository to your [MagicMirror²][mm] modules folder.
 
-    ```bash
-    cd ~/MagicMirror/modules
-    git clone https://github.com/LukasWestholt/MMM-Cinestar-FDW
-    ```
+   ```bash
+   cd ~/MagicMirror/modules
+   git clone https://github.com/LukasWestholt/MMM-Cinestar-FDW
+   ```
 
 2. Install the necessary dependencies and build the module by running npm install in the module folder.
 
@@ -41,23 +41,21 @@ This module depends on the following external API:
 
 3. Configure the module in your `MagicMirror/config/config.js` file as per the usage instructions (sample configuration).
 
-    ```javascript
-    {
-      module: "MMM-Cinestar-FDW",
-      position: "top_left",
-      config: {
-      }
-    }
-    ```
+   ```javascript
+   {
+     module: "MMM-Cinestar-FDW",
+     position: "top_left",
+     config: {}
+   }
+   ```
 
-[//]: # (## Configuration options)
+## Configuration options
 
-[//]: # ()
-[//]: # (| Option           | Possible values | Default       | Description                     |)
-
-[//]: # (| ---------------- | --------------- | ------------- | ------------------------------- |)
-
-[//]: # (| `exampleContent` | `string`        | not available | The content to show on the page |)
+| Option                    | Description                                                                                                                                      |
+| ------------------------- |--------------------------------------------------------------------------------------------------------------------------------------------------|
+| `cinemaID`                | Cinema Jena, randomly chosen. Location doesn't matter. Film der Woche is same everywhere. <br><br>**Type:** `number`<br> **Default value:** `29` |
+| `updateIntervalInSeconds` | Interval to refresh data from server. (min. 120) <br><br>**Type:** `Number`<br> **Default value:** `5 * 60 * 60` (5 h)                       |
+| `maxHeight`               | CSS style to limit image height. <br><br>**Type:** `number`<br> **Default value:** `150`                                                         |
 
 ## Update
 
