@@ -1,7 +1,7 @@
-import { Movie } from './Movie'
+import { Movie } from "./Movie";
 
 export type State = {
-  lastUpdate: number
-  cinestarDate: string
-  movies: Movie[]
-}
+  lastUpdate: number;
+  cinestarDate: string;
+  movies: Movie[];
+};

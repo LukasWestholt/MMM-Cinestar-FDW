@@ -1,4 +1,4 @@
 export type Config = {
-  cinemaID: number
-  updateIntervalInSeconds: number
-}
+  cinemaID: number;
+  updateIntervalInSeconds: number;
+};

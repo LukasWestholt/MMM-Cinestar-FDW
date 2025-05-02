@@ -1,9 +1,9 @@
-import banner2 from 'rollup-plugin-banner2'
-import commonjs from '@rollup/plugin-commonjs'
-import nodeResolve from '@rollup/plugin-node-resolve'
-import terser from '@rollup/plugin-terser'
-import typescript from '@rollup/plugin-typescript'
-import pkg from './package.json'
+import banner2 from "rollup-plugin-banner2";
+import commonjs from "@rollup/plugin-commonjs";
+import nodeResolve from "@rollup/plugin-node-resolve";
+import terser from "@rollup/plugin-terser";
+import typescript from "@rollup/plugin-typescript";
+import pkg from "./package.json";
 
 const bannerText = `/*! *****************************************************************************
   ${pkg.name}
@@ -18,28 +18,39 @@ const bannerText = `/*! ********************************************************
   This file is auto-generated. Do not edit.
 ***************************************************************************** */
 
-`
+`;
 export default [
   {
-    input: './src/frontend/Frontend.ts',
-    external: ['logger'],
-    plugins: [typescript({ module: 'ESNext' }), nodeResolve(), commonjs(), terser(), banner2(() => bannerText)],
+    input: "./src/frontend/Frontend.ts",
+    external: ["logger"],
+    plugins: [
+      typescript({ module: "ESNext" }),
+      nodeResolve(),
+      commonjs(),
+      terser(),
+      banner2(() => bannerText),
+    ],
     output: {
       file: `./${pkg.main}`,
-      format: 'iife',
+      format: "iife",
       globals: {
-        logger: 'Log'
-      }
-    }
+        logger: "Log",
+      },
+    },
   },
   {
-    input: './src/backend/Backend.ts',
-    external: ['node_helper', 'logger', 'axios', 'cheerio'],
-    plugins: [typescript({ module: 'ESNext' }), nodeResolve(), terser(), banner2(() => bannerText)],
+    input: "./src/backend/Backend.ts",
+    external: ["node_helper", "logger", "axios", "cheerio"],
+    plugins: [
+      typescript({ module: "ESNext" }),
+      nodeResolve(),
+      terser(),
+      banner2(() => bannerText),
+    ],
     output: {
-      interop: 'auto',
-      file: './node_helper.js',
-      format: 'cjs'
-    }
-  }
-]
+      interop: "auto",
+      file: "./node_helper.js",
+      format: "cjs",
+    },
+  },
+];

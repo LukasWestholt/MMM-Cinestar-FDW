@@ -1,4 +1,5 @@
 # MMM-Cinestar-FWD
+
 Use this module to display "Film-der-Woche" of German Cinestar cinemas.
 
 # Screenshots
@@ -36,13 +37,11 @@ git clone https://github.com/LukasWestholt/MMM-Cinestar-FDW
 }
 ```
 
-
-
 ## Configuration options
 
-Option|Possible values|Default|Description
-------|------|------|-----------
-`exampleContent`|`string`|not available|The content to show on the page
+| Option           | Possible values | Default       | Description                     |
+| ---------------- | --------------- | ------------- | ------------------------------- |
+| `exampleContent` | `string`        | not available | The content to show on the page |
 
 ## Update
 
@@ -53,9 +52,9 @@ git pull
 
 ## Sending notifications to the module
 
-Notification|Description
-------|-----------
-`TEMPLATE_RANDOM_TEXT`|Payload must contain the text that needs to be shown on this module
+| Notification           | Description                                                         |
+| ---------------------- | ------------------------------------------------------------------- |
+| `TEMPLATE_RANDOM_TEXT` | Payload must contain the text that needs to be shown on this module |
 
 ## Contribution and Development
 
