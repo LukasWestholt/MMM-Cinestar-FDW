@@ -60,7 +60,7 @@ Module.register<Config>("MMM-Cinestar-FDW", {
         this.state = payload;
         this.updateDom();
         console.log(`${this.name} Data: ${payload}`);
-        this.sendSocketNotification(`CINESTAR_FDW_NEW`, this.state);
+        this.sendNotification(`CINESTAR_FDW_NEW`, this.state);
       } else {
         this.state = payload;
       }
