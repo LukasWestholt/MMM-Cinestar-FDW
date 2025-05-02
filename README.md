@@ -1,4 +1,4 @@
-# MMM-Cinestar-FWD
+# MMM-Cinestar-FDW
 
 Displays the "Film der Woche" (Movie of the Week) from [Cinestar](https://cinestar.de/) cinemas on your MagicMirror².
 This module automatically shows the weekly featured film as soon as it's announced — typically late Wednesday or early Thursday.
@@ -71,7 +71,7 @@ npm install
 
 | Notification       | Description                          |
 | ------------------ | ------------------------------------ |
-| `CINESTAR_FWD_NEW` | [State](src/types/State.ts) instance |
+| `CINESTAR_FDW_NEW` | [State](src/types/State.ts) instance |
 
 ## Contribution and Development
 
