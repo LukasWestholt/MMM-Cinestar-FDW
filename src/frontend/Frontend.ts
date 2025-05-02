@@ -29,8 +29,6 @@ Module.register<Config>("MMM-Cinestar-FDW", {
   },
 
   start() {
-    console.log(`${this.name} Start Frontend`);
-    console.log(`${this.name} Config: ${this.config}`);
     this.loadData();
     this.scheduleUpdate();
     this.updateDom();
@@ -59,7 +57,8 @@ Module.register<Config>("MMM-Cinestar-FDW", {
       if (payload.cinestarDate !== lastDate) {
         this.state = payload;
         this.updateDom();
-        console.log(`${this.name} Data: ${payload}`);
+        console.log(`${this.name} Payload comes now`);
+        console.log(payload);
         this.sendNotification(`CINESTAR_FDW_NEW`, this.state);
       } else {
         this.state = payload;
