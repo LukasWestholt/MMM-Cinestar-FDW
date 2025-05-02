@@ -22,6 +22,8 @@ module.exports = NodeHelper.create({
         movies: movies,
       };
 
+      Log.info(`Response ${response}`);
+
       this.sendSocketNotification(`FDW_RESPONSE-${identifier}`, response);
     } else {
       Log.warn(`${notification} is invalid notification`);
