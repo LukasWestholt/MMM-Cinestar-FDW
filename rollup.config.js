@@ -34,7 +34,7 @@ export default [
   },
   {
     input: './src/backend/Backend.ts',
-    external: ['node_helper', 'logger', 'yahoo-finance2'],
+    external: ['node_helper', 'logger', 'axios', 'cheerio'],
     plugins: [typescript({ module: 'ESNext' }), nodeResolve(), terser(), banner2(() => bannerText)],
     output: {
       interop: 'auto',

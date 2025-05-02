@@ -1,6 +1,6 @@
-import axios from 'axios'
+import axios from 'axios';
 import * as cheerio from 'cheerio';
-import { Movie } from '../types/Movie'
+import { Movie } from '../types/Movie';
 
 export default class CinestarBackendUtils {
   static async queryMovieInformation(movieId: number): Promise<Movie> {

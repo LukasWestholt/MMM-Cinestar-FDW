@@ -104,3 +104,7 @@ dist
 .tern-port
 
 .idea/
+
+# Source files, build by rollup
+MMM-Cinestar-FDW.js
+node_helper.js
