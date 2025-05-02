@@ -1,4 +1,4 @@
-Module.register("MMM-Template", {
+Module.register("MMM-Cinestar-FDW", {
 
   defaults: {
     exampleContent: ""

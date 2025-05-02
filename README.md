@@ -1,11 +1,9 @@
-# MMM-Template
-Use this template for creating new MagicMirror² modules.
+# MMM-Cinestar-FWD
+Use this module to display "Film-der-Woche" of German Cinestar cinemas.
 
-See the [wiki page](https://github.com/Dennis-Rosenbaum/MMM-Template/wiki) for an in depth overview of how to get started.
+# Screenshots
 
-# MMM-Template
-
-![Example of MMM-Template](./example_1.png)
+![Example of MMM-Cinestar-FWD](./example_1.png)
 
 [Module description]
 
@@ -13,42 +11,32 @@ See the [wiki page](https://github.com/Dennis-Rosenbaum/MMM-Template/wiki) for a
 
 ### Install
 
-In your terminal, go to your [MagicMirror²][mm] Module folder and clone MMM-Template:
+1. In your terminal, go to your [MagicMirror²][mm] Module folder and clone MMM-Cinestar-FDW:
 
 ```bash
 cd ~/MagicMirror/modules
-git clone [GitHub url]
+git clone https://github.com/LukasWestholt/MMM-Cinestar-FDW
 ```
 
-### Update
+2. Change into the module folder and install runtime dependencies with
 
-```bash
-cd ~/MagicMirror/modules/MMM-Template
-git pull
+   ```sh
+   cd MMM-Cinestar-FDW
+   npm install
+   ```
+
+3. Add the module configuration into the `MagicMirror/config/config.js` file (sample configuration):
+
+```javascript
+{
+  module: "MMM-Cinestar-FDW",
+  position: "top_left",
+  config: {
+  }
+}
 ```
 
-## Using the module
 
-To use this module, add it to the modules array in the `config/config.js` file:
-
-```js
-    {
-        module: 'MMM-Template',
-        position: 'lower_third'
-    },
-```
-
-Or you could use all the options:
-
-```js
-    {
-        module: 'MMM-Template',
-        position: 'lower_third',
-        config: {
-            exampleContent: 'Welcome world'
-        }
-    },
-```
 
 ## Configuration options
 
@@ -56,11 +44,26 @@ Option|Possible values|Default|Description
 ------|------|------|-----------
 `exampleContent`|`string`|not available|The content to show on the page
 
+## Update
+
+```bash
+cd ~/MagicMirror/modules/MMM-Cinestar-FDW
+git pull
+```
+
 ## Sending notifications to the module
 
 Notification|Description
 ------|-----------
 `TEMPLATE_RANDOM_TEXT`|Payload must contain the text that needs to be shown on this module
+
+## Contribution and Development
+
+This module is written in TypeScript and compiled with Rollup.  
+The source files are located in the `/src` folder.
+Compile target files with `npm run build`.
+
+Contribution for this module is welcome!
 
 ## Developer commands
 

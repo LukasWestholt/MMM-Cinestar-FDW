@@ -1,8 +1,8 @@
 {
-  "name": "mmm-template",
+  "name": "mmm-cinestar-fdw",
   "version": "1.0.0",
-  "description": "[Module description]",
-  "main": "MMM-Template.js",
+  "description": "Module for MagicMirror to displays 'Film der Woche' of Cinestar cinemas.",
+  "main": "MMM-Cinestar-FDW.js",
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
@@ -10,17 +10,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+[GitHub url].git"
+    "url": "git+https://github.com/LukasWestholt/MMM-Cinestar-FDW.git"
   },
   "keywords": [
     "template"
   ],
-  "author": "[Author]",
+  "author": "Lukas Westholt",
   "license": "MIT",
   "bugs": {
-    "url": "[GitHub url]/issues"
+    "url": "https://github.com/LukasWestholt/MMM-Cinestar-FDW/issues"
   },
-  "homepage": "[GitHub url]#readme",
+  "homepage": "https://github.com/LukasWestholt/MMM-Cinestar-FDW#readme",
   "devDependencies": {
     "@eslint/js": "^9.10.0",
     "@stylistic/eslint-plugin": "^2.7.2",
