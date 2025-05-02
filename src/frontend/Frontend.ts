@@ -1,6 +1,11 @@
 import type { Config } from "../types/Config";
 import type { State } from "../types/State";
 
+interface FrontendModuleProperties
+  extends Partial<Module.ModuleProperties<Config>> {
+  state?: State;
+}
+
 Module.register<Config>("MMM-Cinestar-FDW", {
   defaults: {
     cinemaID: 29,
@@ -50,7 +55,7 @@ Module.register<Config>("MMM-Cinestar-FDW", {
 
   socketNotificationReceived(notificationIdentifier: string, payload: State) {
     if (notificationIdentifier === `CINESTAR_FDW_RESPONSE-${this.identifier}`) {
-      const lastDate = this.state.cinestarDate;
+      const lastDate = this.state?.cinestarDate;
       if (payload.cinestarDate !== lastDate) {
         this.state = payload;
         this.updateDom();
@@ -61,4 +66,4 @@ Module.register<Config>("MMM-Cinestar-FDW", {
       }
     }
   },
-});
+} as FrontendModuleProperties);
