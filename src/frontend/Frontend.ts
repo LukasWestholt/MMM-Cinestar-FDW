@@ -1,6 +1,5 @@
 import type { Config } from "../types/Config";
 import type { State } from "../types/State";
-import * as Log from "logger";
 
 // Global or injected variable declarations
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -33,8 +32,8 @@ Module.register<Config>("MMM-Cinestar-FWD", {
   },
 
   start() {
-    Log.log(`${this.name} Start Frontend`);
-    Log.log(`${this.name} Config: ${this.config}`);
+    console.log(`${this.name} Start Frontend`);
+    console.log(`${this.name} Config: ${this.config}`);
     this.loadData();
     this.scheduleUpdate();
     this.updateDom();
@@ -63,7 +62,7 @@ Module.register<Config>("MMM-Cinestar-FWD", {
       if (payload.cinestarDate !== lastDate) {
         this.state = payload;
         this.updateDom();
-        Log.log(`${this.name} Data: ${payload}`);
+        console.log(`${this.name} Data: ${payload}`);
         console.log("data", payload);
         this.sendSocketNotification(`CINESTAR_FWD_NEW`, this.state);
       } else {

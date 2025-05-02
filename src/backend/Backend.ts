@@ -17,7 +17,9 @@ module.exports = NodeHelper.create({
         payload,
     );
     if (notification.includes("CINESTAR_FDW_REQUEST")) {
-      const identifier = notification.substring("FDW_REQUEST".length + 1);
+      const identifier = notification.substring(
+        "CINESTAR_FDW_REQUEST".length + 1,
+      );
       const { movies, date } = await CinestarBackendUtils.getFDW(
         payload.cinemaID,
       );
