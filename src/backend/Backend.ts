@@ -10,7 +10,13 @@ module.exports = NodeHelper.create({
   },
 
   async socketNotificationReceived(notification, payload: Config) {
-    if (notification.includes("FDW_REQUEST")) {
+    Log.log(
+      "Cinestar received a socket notification: " +
+        notification +
+        " - Payload: " +
+        payload,
+    );
+    if (notification.includes("CINESTAR_FDW_REQUEST")) {
       const identifier = notification.substring("FDW_REQUEST".length + 1);
       const { movies, date } = await CinestarBackendUtils.getFDW(
         payload.cinemaID,
@@ -24,7 +30,10 @@ module.exports = NodeHelper.create({
 
       Log.info(`Response ${response}`);
 
-      this.sendSocketNotification(`FDW_RESPONSE-${identifier}`, response);
+      this.sendSocketNotification(
+        `CINESTAR_FDW_RESPONSE-${identifier}`,
+        response,
+      );
     } else {
       Log.warn(`${notification} is invalid notification`);
     }
