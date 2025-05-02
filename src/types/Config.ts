@@ -1,4 +1,4 @@
-export type Config = {
+export interface Config {
   cinemaID: number;
   updateIntervalInSeconds: number;
-};
+}

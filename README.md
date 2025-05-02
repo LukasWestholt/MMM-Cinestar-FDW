@@ -1,32 +1,45 @@
 # MMM-Cinestar-FWD
 
-Use this module to display "Film-der-Woche" of German Cinestar cinemas.
+Displays the "Film der Woche" (Movie of the Week) from [Cinestar](https://cinestar.de/) cinemas on your MagicMirror².
+This module automatically shows the weekly featured film as soon as it's announced — typically late Wednesday or early Thursday.
 
-# Screenshots
+## Screenshot
 
-![Example of MMM-Cinestar-FWD](./example_1.png)
+![Example display of the current Film der Woche.](./example_1.png)
 
-[Module description]
+## Dependencies
+
+This module depends on the following external API:
+
+- Cinestar API
+
+  - Free to use, no official documentation available.
+
+  - Public endpoint used by the official Cinestar website.
+
+  - API might be subject to rate limiting or changes at Cinestar’s discretion.
+
+  - No API key required.
 
 ## Installation
 
 ### Install
 
-1. In your terminal, go to your [MagicMirror²][mm] Module folder and clone MMM-Cinestar-FDW:
+1. Clone or download this repository to your [MagicMirror²][mm] modules folder.
 
 ```bash
 cd ~/MagicMirror/modules
 git clone https://github.com/LukasWestholt/MMM-Cinestar-FDW
 ```
 
-2. Change into the module folder and install runtime dependencies with
+2. Install the necessary dependencies by running npm install in the module folder.
 
    ```sh
    cd MMM-Cinestar-FDW
    npm install
    ```
 
-3. Add the module configuration into the `MagicMirror/config/config.js` file (sample configuration):
+3. Configure the module in your `MagicMirror/config/config.js` file as per the usage instructions (sample configuration).
 
 ```javascript
 {
@@ -48,13 +61,14 @@ git clone https://github.com/LukasWestholt/MMM-Cinestar-FDW
 ```bash
 cd ~/MagicMirror/modules/MMM-Cinestar-FDW
 git pull
+npm install
 ```
 
-## Sending notifications to the module
+## Receiving notifications from the module
 
-| Notification           | Description                                                         |
-| ---------------------- | ------------------------------------------------------------------- |
-| `TEMPLATE_RANDOM_TEXT` | Payload must contain the text that needs to be shown on this module |
+| Notification       | Description                          |
+| ------------------ | ------------------------------------ |
+| `CINESTAR_FWD_NEW` | [State](src/types/State.ts) instance |
 
 ## Contribution and Development
 
@@ -69,5 +83,11 @@ Contribution for this module is welcome!
 - `npm install` - Install devDependencies like ESLint.
 - `npm run lint` - Run linting and formatter checks.
 - `npm run lint:fix` - Fix linting and formatter issues.
+
+# License and Credits
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+I've got API details from https://github.com/akorb/cinestar-bot/tree/main. Thank you very much @akorb!
 
 [mm]: https://github.com/MagicMirrorOrg/MagicMirror

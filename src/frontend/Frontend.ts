@@ -1,5 +1,5 @@
-import { Config } from "../types/Config";
-import { State } from "../types/State";
+import type { Config } from "../types/Config";
+import type { State } from "../types/State";
 
 // Global or injected variable declarations
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -48,16 +48,20 @@ Module.register<Config>("MMM-Cinestar-FWD", {
   },
 
   loadData() {
-    this.sendSocketNotification(`FWD_REQUEST-${this.identifier}`, this.config);
+    this.sendSocketNotification(
+      `CINESTAR_FWD_REQUEST-${this.identifier}`,
+      this.config,
+    );
   },
 
   socketNotificationReceived(notificationIdentifier: string, payload: State) {
-    if (notificationIdentifier === `FWD_RESPONSE-${this.identifier}`) {
+    if (notificationIdentifier === `CINESTAR_FWD_RESPONSE-${this.identifier}`) {
       const lastDate = this.state.cinestarDate;
       if (payload.cinestarDate !== lastDate) {
         this.state = payload;
         this.updateDom();
         console.log("data", payload);
+        this.sendSocketNotification(`CINESTAR_FWD_NEW`, this.state);
       } else {
         this.state = payload;
       }

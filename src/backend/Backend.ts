@@ -1,8 +1,8 @@
 import * as NodeHelper from "node_helper";
 import * as Log from "logger";
-import { State } from "../types/State";
-import CinestarBackendUtils from "./CinestarBackendUtils";
-import { Config } from "../types/Config";
+import type { State } from "../types/State";
+import * as CinestarBackendUtils from "./CinestarBackendUtils";
+import type { Config } from "../types/Config";
 
 module.exports = NodeHelper.create({
   start() {

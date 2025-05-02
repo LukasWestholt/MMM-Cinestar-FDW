@@ -1,7 +1,7 @@
-import { Movie } from "./Movie";
+import type { Movie } from "./Movie";
 
-export type State = {
+export interface State {
   lastUpdate: number;
   cinestarDate: string;
   movies: Movie[];
-};
+}
