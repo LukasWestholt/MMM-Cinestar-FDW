@@ -1,5 +1,7 @@
-{% for movie in movies %}
-  <li class="cinestar-fdw-movie">
-    <img id="{{ movie.movie_id }}" src="{{ movie.poster_url }}" alt="Movie poster {{ movie.title }}" style="height:{{config.maxHeight}}px;">
-  </li>
-{% endfor %}
+<ul class="unstyled">
+    {% for movie in movies %}
+      <li class="cinestar-fdw-movie">
+        <img id="{{ movie.movie_id }}" src="{{ movie.poster_url }}" alt="Movie poster {{ movie.title }}" style="height:{{config.maxHeight}}px;">
+      </li>
+    {% endfor %}
+</ul>

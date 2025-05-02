@@ -1,3 +1,7 @@
 .MMM-Cinestar-FDW img {
   padding: 8px;
 }
+
+.MMM-Cinestar-FDW ul {
+  list-style-type: none;
+}
