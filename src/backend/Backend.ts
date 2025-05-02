@@ -11,7 +11,7 @@ module.exports = NodeHelper.create({
 
   async socketNotificationReceived(notification, payload: Config) {
     Log.log(
-      "Cinestar received a socket notification: " +
+      `${this.name} received a socket notification: ` +
         notification +
         " - Payload: " +
         payload,
@@ -28,7 +28,7 @@ module.exports = NodeHelper.create({
         movies: movies,
       };
 
-      Log.info(`Response ${response}`);
+      Log.log(`${this.name}: Response ${response}`);
 
       this.sendSocketNotification(
         `CINESTAR_FDW_RESPONSE-${identifier}`,
