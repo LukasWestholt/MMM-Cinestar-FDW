@@ -17,7 +17,9 @@
     "url": "git+https://github.com/LukasWestholt/MMM-Cinestar-FDW.git"
   },
   "keywords": [
-    "template"
+    "cinema",
+    "cinestar",
+    "poster"
   ],
   "author": "Lukas Westholt",
   "license": "MIT",
