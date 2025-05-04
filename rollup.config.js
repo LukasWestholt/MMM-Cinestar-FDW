@@ -1,24 +1,16 @@
-import banner2 from "rollup-plugin-banner2";
 import commonjs from "@rollup/plugin-commonjs";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
 import typescript from "@rollup/plugin-typescript";
 import pkg from "./package.json";
 
-const bannerText = `/*! *****************************************************************************
-  ${pkg.name}
-  Version ${pkg.version}
+const bannerText = `/*!
+ * ${pkg.name} v${pkg.version}
+ * (c) ${new Date().getFullYear()} ${pkg.author ? pkg.author : pkg.contributors}
+ * Released under the ${pkg.license} License
+ + This file is auto-generated. Do not edit.
+ */`;
 
-  ${pkg.description}
-  Please submit bugs at ${pkg.bugs.url}
-
-  (c) ${pkg.author ? pkg.author : pkg.contributors}
-  Licence: ${pkg.license}
-
-  This file is auto-generated. Do not edit.
-***************************************************************************** */
-
-`;
 export default [
   {
     input: "./src/frontend/Frontend.ts",
@@ -28,7 +20,6 @@ export default [
       nodeResolve(),
       commonjs(),
       terser(),
-      banner2(() => bannerText),
     ],
     output: {
       file: `./${pkg.main}`,
@@ -36,21 +27,18 @@ export default [
       globals: {
         logger: "Log",
       },
+      banner: bannerText,
     },
   },
   {
     input: "./src/backend/Backend.ts",
     external: ["node_helper", "logger", "axios", "cheerio"],
-    plugins: [
-      typescript({ module: "ESNext" }),
-      nodeResolve(),
-      terser(),
-      banner2(() => bannerText),
-    ],
+    plugins: [typescript({ module: "ESNext" }), nodeResolve(), terser()],
     output: {
       interop: "auto",
       file: "./node_helper.js",
       format: "cjs",
+      banner: bannerText,
     },
   },
 ];
