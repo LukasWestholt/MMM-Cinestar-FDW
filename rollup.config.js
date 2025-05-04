@@ -32,7 +32,7 @@ export default [
   },
   {
     input: "./src/backend/Backend.ts",
-    external: ["node_helper", "logger", "axios", "cheerio"],
+    external: ["node_helper", "logger", "cheerio"],
     plugins: [typescript({ module: "ESNext" }), nodeResolve(), terser()],
     output: {
       interop: "auto",

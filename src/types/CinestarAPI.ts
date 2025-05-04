@@ -42,3 +42,36 @@ export interface CinestarUI {
 export enum LinkTarget {
   Self = "_self",
 }
+
+export interface CinestarMovie {
+  _type: string;
+  id: number;
+  cinema: number;
+  title: string;
+  subtitle: string;
+  hasTrailer: boolean;
+  attributes: string[];
+  fsk: number;
+  showtimes: Showtime[];
+  poster_preload: string;
+  poster: string;
+  date: string;
+  movie: number;
+  duration: number;
+  trailer: number;
+  detailLink: string;
+}
+
+export interface Showtime {
+  id: number;
+  name: string;
+  cinema: number;
+  datetime: string;
+  emv: number;
+  fsk: number;
+  systemId: string;
+  system: string;
+  show: number;
+  attributes: string[];
+  screen: number;
+}
