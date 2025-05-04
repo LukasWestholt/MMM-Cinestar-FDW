@@ -46,15 +46,15 @@ This module depends on the following external API:
      module: "MMM-Cinestar-FDW",
      position: "top_left",
      config: {}
-   }
+   },
    ```
 
 ## Configuration options
 
 | Option                    | Description                                                                                                                                      |
-| ------------------------- |--------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `cinemaID`                | Cinema Jena, randomly chosen. Location doesn't matter. Film der Woche is same everywhere. <br><br>**Type:** `number`<br> **Default value:** `29` |
-| `updateIntervalInSeconds` | Interval to refresh data from server. (min. 120) <br><br>**Type:** `Number`<br> **Default value:** `5 * 60 * 60` (5 h)                       |
+| `updateIntervalInSeconds` | Interval to refresh data from server. (min. 120) <br><br>**Type:** `Number`<br> **Default value:** `5 * 60 * 60` (5 h)                           |
 | `maxHeight`               | CSS style to limit image height. <br><br>**Type:** `number`<br> **Default value:** `150`                                                         |
 
 ## Update
