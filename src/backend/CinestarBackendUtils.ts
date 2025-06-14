@@ -7,6 +7,8 @@ import type {
   CinestarUI,
 } from "../types/CinestarAPI";
 
+const ApiAppVersion = "1.5.3";
+
 async function fetchJson<T>(url: string): Promise<T> {
   const response = await fetch(url);
   if (!response.ok) {
@@ -17,7 +19,7 @@ async function fetchJson<T>(url: string): Promise<T> {
 
 export async function queryMovieInformation(movieId: number): Promise<Movie> {
   const data = await fetchJson<CinestarMovie>(
-    `https://www.cinestar.de/api/show/${movieId}?appVersion=1.5.3`,
+    `https://www.cinestar.de/api/show/${movieId}?appVersion=${ApiAppVersion}`,
   );
   const title = data.title;
   const poster_url = data.poster.replace("/poster_tile/", "/web_l/");
@@ -49,14 +51,14 @@ export function getDateText(webpage: cheerio.CheerioAPI): string {
 
 export async function getFdwIdentifier(): Promise<string> {
   const data = await fetchJson<CinestarAtribute[]>(
-    "https://www.cinestar.de/api/attribute/?appVersion=1.5.3",
+    "https://www.cinestar.de/api/attribute/?appVersion=" + ApiAppVersion,
   );
   return data.find((obj) => obj.id === "ET_FILM_DER_WOCHE")?.name; // "Film der Woche"
 }
 
 export async function getCinemaSuburl(cinemaID: number): Promise<string> {
   const data = await fetchJson<CinestarCinema[]>(
-    "https://www.cinestar.de/api/cinema/?appVersion=1.5.3",
+    "https://www.cinestar.de/api/cinema/?appVersion=" + ApiAppVersion,
   );
   return data.find((obj) => obj.id == cinemaID)?.slug; // "kino-jena"
 }
@@ -67,7 +69,7 @@ export async function getFdwPageUrl(
   cinemaID: number,
 ): Promise<string> {
   const data = await fetchJson<CinestarUI[]>(
-    `https://www.cinestar.de/aets/flaps/${cinemaID}?appVersion=1.5.3`,
+    `https://www.cinestar.de/aets/flaps/${cinemaID}?appVersion=${ApiAppVersion}`,
   );
   const url = data.find((obj) => obj.title === fdwIdentifier)?.link;
   return url.replace("/redirect/", `/${suburl}/`); // "https://cinestar.de/kino-jena/film-der-woche"
