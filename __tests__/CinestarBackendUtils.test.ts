@@ -5,6 +5,8 @@ import {
   getFdwPageUrl,
   getWebpage,
   getDateText,
+  normalizeToHttpsUrl,
+  assertIsValidHttpsUrl,
 } from "../src/backend/CinestarBackendUtils";
 
 describe("FDW Utility Functions - Real API Calls", () => {
@@ -27,6 +29,18 @@ describe("FDW Utility Functions - Real API Calls", () => {
     expect(result).toBe("https://cinestar.de/kino-jena/film-der-woche");
   });
 
+  test("normalizeToHttpsUrl should return correct URL", async () => {
+    const result = normalizeToHttpsUrl(
+      "https://cinestar.de/kino-jena/film-der-woche",
+    );
+    expect(result).toBe("https://cinestar.de/kino-jena/film-der-woche");
+  });
+
+  test("normalizeToHttpsUrl should add https to URL", async () => {
+    const result = normalizeToHttpsUrl("cinestar.de/kino-jena/film-der-woche");
+    expect(result).toBe("https://cinestar.de/kino-jena/film-der-woche");
+  });
+
   test("getDateText should extract correct date", async () => {
     const url = "https://www.cinestar.de/kino-jena/film-der-woche";
     const webpage = await getWebpage(url);
@@ -45,5 +59,39 @@ describe("FDW Utility Functions - Real API Calls", () => {
     expect(result.movies[0]).toHaveProperty("movie_id");
     expect(result.movies[0]).toHaveProperty("title");
     expect(result.movies[0]).toHaveProperty("poster_url");
+  });
+});
+
+describe("assertIsValidHttpsUrl", () => {
+  it("passes on valid https URL", () => {
+    expect(() => assertIsValidHttpsUrl("https://cinestar.de/")).not.toThrow();
+  });
+
+  it("throws on http URL", () => {
+    expect(() => assertIsValidHttpsUrl("http://cinestar.de/")).toThrow(
+      "Expected",
+    );
+  });
+
+  it("throws on non-URL string", () => {
+    expect(() => assertIsValidHttpsUrl("not a url")).toThrow("Invalid URL");
+  });
+
+  it("throws on empty string", () => {
+    expect(() => assertIsValidHttpsUrl("")).toThrow("Invalid URL");
+  });
+
+  it("throws on ftp URL", () => {
+    expect(() => assertIsValidHttpsUrl("ftp://example.com")).toThrow(
+      "Expected",
+    );
+  });
+
+  it("accepts https URL with path and query", () => {
+    expect(() =>
+      assertIsValidHttpsUrl(
+        "https://cinestar.de/kino-jena/film-der-woche?query=123",
+      ),
+    ).not.toThrow();
   });
 });

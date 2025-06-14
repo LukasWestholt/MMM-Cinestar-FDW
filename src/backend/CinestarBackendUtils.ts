@@ -63,6 +63,31 @@ export async function getCinemaSuburl(cinemaID: number): Promise<string> {
   return data.find((obj) => obj.id == cinemaID)?.slug; // "kino-jena"
 }
 
+export function assertIsValidHttpsUrl(input: string): asserts input is string {
+  let url: URL;
+  try {
+    url = new URL(input);
+  } catch (err) {
+    throw new Error(`Invalid HTTPS URL ${input}: ${(err as Error).message}`);
+  }
+  if (url.protocol !== "https:") {
+    throw new Error(
+      `Expected URL with 'https:' protocol, got '${url.protocol}'`,
+    );
+  }
+}
+
+export function normalizeToHttpsUrl(input: string): string {
+  try {
+    const url = new URL(input);
+    // Already a full URL
+    return url.href;
+  } catch {
+    // If it's missing protocol, assume it's a domain/path and add https://
+    return `https://${input}`;
+  }
+}
+
 export async function getFdwPageUrl(
   fdwIdentifier: string,
   suburl: string,
@@ -71,7 +96,9 @@ export async function getFdwPageUrl(
   const data = await fetchJson<CinestarUI[]>(
     `https://www.cinestar.de/aets/flaps/${cinemaID}?appVersion=${ApiAppVersion}`,
   );
-  const url = data.find((obj) => obj.title === fdwIdentifier)?.link;
+  let url = data.find((obj) => obj.title === fdwIdentifier)?.link;
+  url = normalizeToHttpsUrl(url);
+  assertIsValidHttpsUrl(url);
   return url.replace("/redirect/", `/${suburl}/`); // "https://cinestar.de/kino-jena/film-der-woche"
 }
 
